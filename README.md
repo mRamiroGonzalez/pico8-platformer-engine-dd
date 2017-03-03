@@ -1,5 +1,8 @@
-Working
-  Jump
+
+My attempt at making a small 2D platformer engine
+
+- Working
+  - Jump
   
-Not working
-  Jumping only works on floors with a height divisible by 8
+- Not working
+  - Jumping on floors with a height which is not a multiple of 8
