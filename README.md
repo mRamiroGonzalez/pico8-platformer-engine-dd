@@ -3,9 +3,11 @@ My attempt at making a small 2D platformer engine
 
 - Working:
   - Jump
+  - Basic platforms
   
 - Not working:
   - Jumping on floors with a height which is not a multiple of 8
+  - The speed of the jump and gravity sometimes causes the player to go in the ground
 
 - Flags:
   - 0: The block is considered as solid. You can't pass through from any side
