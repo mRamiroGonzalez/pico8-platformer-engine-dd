@@ -4,6 +4,7 @@ My attempt at making a small 2D platformer engine
 - Working:
   - Jump
   - Basic platforms
+  - Climbing on a ladder
   
 - Not working:
   - Jumping on floors with a height which is not a multiple of 8
