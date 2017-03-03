@@ -66,7 +66,7 @@ function get_flag_state_block_right()
 end
 
 function get_flag_state_block_top(flag)
- return get_flag(0,-3,flag) or get_flag(7,-3,flag)
+ return get_flag(0,-1,flag) or get_flag(7,-1,flag)
 end
 
 function get_flag_state_block_below(flag)
@@ -98,7 +98,7 @@ function get_inputs()
   end
  end
  
- if up_pressed() and not p.jumping then
+ if up_pressed() and not p.jumping and not below_a_solid_block() then
   p.jumping = true
   p.dy = -jump_acceleration
  end
