@@ -20,8 +20,8 @@ end
 
 function _draw()
  cls()
- spr(0, p.x, p.y, 1, 1)
  map(0,0,0,0,16,16)
+ spr(0, p.x, p.y, 1, 1)
  print ("---------")
  print ("land")
  print (on_land())
