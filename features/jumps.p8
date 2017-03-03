@@ -23,14 +23,12 @@ function _draw()
  print (p.y)
  print (p.dy)
  print (p.jumping)
- print (on_floor())
+ print (hits_the_ground())
 end
 
 function _update()
- update_fall()
  controls()
- p.x += p.dx
- p.y += p.dy
+ update_fall()
 end
 
 function controls()
@@ -41,10 +39,12 @@ function controls()
   p.jumping = true
   p.dy = -jump_acceleration
  end
+ p.x += p.dx
+ p.y += p.dy
 end
 
 function update_fall()
- if on_floor() then
+ if hits_the_ground() then
   p.jumping = false
   p.dy = 0
   p.y = flr(flr(p.y)/8)*8
@@ -54,7 +54,9 @@ function update_fall()
  if (p.dy > fall_max_speed) then p.dy = fall_max_speed end
 end
 
-function on_floor() return p.y + 8 >= floor_y end
+function hits_the_ground() 
+ return (p.y + 8 >= floor_y) and p.dy > 0
+end
 
 function up_pressed()    return btnp(2) end
 function left_pressed()  return btn(0)  end
