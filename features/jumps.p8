@@ -10,9 +10,9 @@ function _init()
  }
 
  floor_y = 64
- jump_acceleration = 6
- fall_max_speed = 3
- fall_acceleration = 1
+ jump_acceleration = 10
+ fall_max_speed = 5
+ gravity = 1
  x_speed = 2
 end
 
@@ -49,7 +49,7 @@ function update_fall()
   p.dy = 0
   p.y = flr(flr(p.y)/8)*8
  else
-  p.dy += fall_acceleration
+  p.dy += gravity
  end
  if (p.dy > fall_max_speed) then p.dy = fall_max_speed end
 end
