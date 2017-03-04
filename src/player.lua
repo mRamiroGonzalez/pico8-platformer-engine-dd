@@ -4,6 +4,7 @@ function player_init()
   y = 40,
   dx = 0,
   dy = 0,
+  facing = 1
  }
 end
 
@@ -22,10 +23,16 @@ function update_from_keys_pressed()
   p.dy = -2
  end
  if left_pressed() then
-  p.dx = -2
+  p.facing = 0
+  if not is_in_front_of_a_block() then
+   p.dx = -2
+  end
  end
  if right_pressed() then
-  p.dx = 2
+  p.facing = 1
+  if not is_in_front_of_a_block() then
+   p.dx = 2
+  end
  end
  p.x += p.dx
  p.y += p.dy
@@ -43,4 +50,8 @@ function update_gravity()
    p.dy = max_falling_speed
   end
  end
+end
+
+function is_in_front_of_a_block()
+ return get_block_in_front(p, 0)
 end

@@ -11,14 +11,18 @@ function down_pressed() return btn(3) end
 function left_pressed() return btn(0) end
 function right_pressed() return btn(1) end
 function print_log()
-print(p.x)
-print(p.y)
-print(p.dx)
-print(p.dy)
-print(get_block_below(p, 0))
+print(get_block_in_front(p, 0))
 end
 function map_draw()
 map(0,0,0,0,16,16)
+end
+
+function get_block_in_front(e, flag)
+if (e.facing == 1) then
+return get_block_flag(e.x+8, e.y, flag) or get_block_flag(e.x+8, e.y+7, flag)
+else
+return get_block_flag(e.x-1, e.y, flag) or get_block_flag(e.x-1, e.y+7, flag)
+end
 end
 
 function get_block_below(e, flag)
@@ -34,6 +38,7 @@ x = 80,
 y = 40,
 dx = 0,
 dy = 0,
+facing = 1
 }
 end
 
@@ -52,10 +57,16 @@ if up_pressed() then
 p.dy = -2
 end
 if left_pressed() then
+p.facing = 0
+if not is_in_front_of_a_block() then
 p.dx = -2
 end
+end
 if right_pressed() then
+p.facing = 1
+if not is_in_front_of_a_block() then
 p.dx = 2
+end
 end
 p.x += p.dx
 p.y += p.dy
@@ -73,6 +84,10 @@ if p.dy >= max_falling_speed then
 p.dy = max_falling_speed
 end
 end
+end
+
+function is_in_front_of_a_block()
+return get_block_in_front(p, 0)
 end
 function _init()
 constants_init()
@@ -385,6 +400,14 @@ __music__
 00 41424344
 00 41424344
 00 41424344
+
+
+
+
+
+
+
+
 
 
 
