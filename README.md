@@ -5,6 +5,7 @@ My attempt at making a small 2D platformer engine
 This project is compressed using a php script, see https://www.reddit.com/r/pico8/comments/5p9ohs/my_pico8_development_workflow/
 
 - Working:
+  - Moving the player in 4 directions
   
 - Not working:
 

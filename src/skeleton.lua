@@ -4,8 +4,8 @@ end
 
 function _draw()
  cls()
- print_log()
  map_draw()
+ print_log()
  player_draw()
 end
 
