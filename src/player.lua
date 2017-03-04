@@ -11,6 +11,17 @@ function player_update_position()
  p.dy = 0
  p.dx = 0
 
+ update_from_keys_pressed()
+ 
+ p.x += p.dx
+ p.y += p.dy
+end
+
+function player_draw()
+ spr(0,p.x, p.y,1,1)
+end
+
+function update_from_keys_pressed()
  if up_pressed() then
   p.dy = -2
  end
@@ -23,11 +34,4 @@ function player_update_position()
  if right_pressed() then
   p.dx = 2
  end
-
- p.x += p.dx
- p.y += p.dy
-end
-
-function player_draw()
- spr(0,p.x, p.y,1,1)
 end
