@@ -5,9 +5,10 @@ My attempt at making a small 2D platformer engine
 This project is compressed using a php script, see https://www.reddit.com/r/pico8/comments/5p9ohs/my_pico8_development_workflow/
 
 - Working:
-  - Moving the player in 4 directions
+  - Player walking on solid block
   
-- Not working:
+- Not working - bugs:
+  - The player can go through blocks if it's speed is more than 8 px/loop
 
 - Flags:
   - 0: The block is considered as solid. You can't pass through from any side
