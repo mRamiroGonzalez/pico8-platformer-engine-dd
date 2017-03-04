@@ -1,6 +1,9 @@
 
 My attempt at making a small 2D platformer engine
 
+
+Everything will be put together in one file once I have everything working as intended.
+
 - Working:
   - Jump
   - Basic platforms
