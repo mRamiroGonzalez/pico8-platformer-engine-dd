@@ -1,4 +1,5 @@
 function _init()
+ constants_init()
  player_init()
 end
 
