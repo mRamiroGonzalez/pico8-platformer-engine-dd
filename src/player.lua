@@ -1,7 +1,7 @@
 function player_init()
  p = {
   x = 80,
-  y = 40,
+  y = 60,
   dx = 0,
   dy = 0,
   facing = 1,
@@ -21,8 +21,16 @@ end
 function update_from_keys_pressed()
  p.dx = 0
 
- if up_pressed(true) then
-  jump()
+ if is_on_a_ladder() then
+  if up_pressed(false) then
+   p.dy = -default_y_speed
+  elseif down_pressed(false) then
+   p.dy = default_y_speed
+  end
+ else
+  if up_pressed(true) then
+   jump()
+  end
  end
 
  if left_pressed(false) then
@@ -55,20 +63,33 @@ function jump()
 end
 
 function update_gravity()
- if is_on_a_platform() and (p.dy > 0) then
+ if (is_on_a_platform() or is_on_a_solid_block()) and (p.dy > 0) then
    p.jumping = false
    p.dy = 0
    p.y = flr(flr(p.y)/8)*8
  else
-  p.dy += gravity
+  if is_on_a_ladder() then
+   p.jumping = false
+   p.dy = 0
+  else
+   p.dy += gravity
+  end
   if p.dy >= max_falling_speed then
    p.dy = max_falling_speed
   end
  end
 end
 
+function is_on_a_ladder()
+ return get_current_block(p, 2)
+end
+
 function is_on_a_platform()
- return get_block_below(p, 0) or get_block_below(p, 1)
+ return get_block_below(p, 1)
+end
+
+function is_on_a_solid_block()
+ return get_block_below(p, 0)
 end
 
 function is_in_front_of_a_block()

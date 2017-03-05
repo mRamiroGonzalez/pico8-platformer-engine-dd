@@ -3,6 +3,13 @@ function map_draw()
 end
 
 
+function get_current_block(e, flag)
+ return get_block_flag(e.x+1, e.y+1, flag) or 
+        get_block_flag(e.x+6, e.y+1, flag) or 
+        get_block_flag(e.x+1, e.y+6, flag) or 
+        get_block_flag(e.x+6, e.y+6, flag)
+end
+
 function get_block_on_top(e, flag)
  return get_block_flag(e.x, e.y-1, flag) or get_block_flag(e.x+7, e.y-1, flag)
 end
