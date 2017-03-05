@@ -2,6 +2,11 @@ function map_draw()
  map(0,0,0,0,16,16)
 end
 
+
+function get_block_on_top(e, flag)
+ return get_block_flag(e.x, e.y-1, flag) or get_block_flag(e.x+7, e.y-1, flag)
+end
+
 function get_block_in_front(e, flag)
  if (e.facing == 1) then
   return get_block_flag(e.x+8, e.y, flag) or get_block_flag(e.x+8, e.y+7, flag)

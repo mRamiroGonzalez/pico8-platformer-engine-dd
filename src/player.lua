@@ -4,7 +4,8 @@ function player_init()
   y = 40,
   dx = 0,
   dy = 0,
-  facing = 1
+  facing = 1,
+  jumping = false
  }
 end
 
@@ -19,28 +20,44 @@ end
 
 function update_from_keys_pressed()
  p.dx = 0
- if up_pressed() then
-  p.dy = -2
+
+ if up_pressed(true) then
+  jump()
  end
- if left_pressed() then
+
+ if left_pressed(false) then
   p.facing = 0
   if not is_in_front_of_a_block() then
-   p.dx = -2
+   p.dx = -default_x_speed
   end
  end
- if right_pressed() then
+
+ if right_pressed(false) then
   p.facing = 1
   if not is_in_front_of_a_block() then
-   p.dx = 2
+   p.dx = default_x_speed
   end
  end
+
+ if is_below_a_block() then 
+  p.dy = default_y_speed 
+ end
+
  p.x += p.dx
  p.y += p.dy
+end
+
+function jump()
+ if not p.jumping then
+  p.jumping = true
+  p.dy = -jumping_height
+ end
 end
 
 function update_gravity()
  if get_block_below(p, 0) then
   if (p.dy > 0) then
+   p.jumping = false
    p.dy = 0
    p.y = flr(flr(p.y)/8)*8
   end 
@@ -54,4 +71,8 @@ end
 
 function is_in_front_of_a_block()
  return get_block_in_front(p, 0)
+end
+
+function is_below_a_block()
+ return get_block_on_top(p, 0)
 end

@@ -3,18 +3,41 @@ version 8
 __lua__
 
 function constants_init()
-gravity = 2
-max_falling_speed = 8 // "More than 8 is not recommended"
+gravity = 1
+max_falling_speed = 8 // "more than 8 is not recommended"
+jumping_height = 8
+default_x_speed = 2
+default_y_speed = 2
 end
-function up_pressed() return btn(2) end
-function down_pressed() return btn(3) end
-function left_pressed() return btn(0) end
-function right_pressed() return btn(1) end
+function up_pressed(short)
+if short then return btnp(2)
+else return btn(2) end
+end
+
+function down_pressed(short)
+if short then return btnp(3)
+else return btn(3) end
+end
+
+function left_pressed(short)
+if short then return btnp(0)
+else return btn(0) end
+end
+
+function right_pressed(short)
+if short then return btnp(1)
+else return btn(1) end
+end
 function print_log()
-print(get_block_in_front(p, 0))
+print(p.jumping)
 end
 function map_draw()
 map(0,0,0,0,16,16)
+end
+
+
+function get_block_on_top(e, flag)
+return get_block_flag(e.x, e.y-1, flag) or get_block_flag(e.x+7, e.y-1, flag)
 end
 
 function get_block_in_front(e, flag)
@@ -38,7 +61,8 @@ x = 80,
 y = 40,
 dx = 0,
 dy = 0,
-facing = 1
+facing = 1,
+jumping = false
 }
 end
 
@@ -53,28 +77,44 @@ end
 
 function update_from_keys_pressed()
 p.dx = 0
-if up_pressed() then
-p.dy = -2
+
+if up_pressed(true) then
+jump()
 end
-if left_pressed() then
+
+if left_pressed(false) then
 p.facing = 0
 if not is_in_front_of_a_block() then
-p.dx = -2
+p.dx = -default_x_speed
 end
 end
-if right_pressed() then
+
+if right_pressed(false) then
 p.facing = 1
 if not is_in_front_of_a_block() then
-p.dx = 2
+p.dx = default_x_speed
 end
 end
+
+if is_below_a_block() then
+p.dy = default_y_speed
+end
+
 p.x += p.dx
 p.y += p.dy
+end
+
+function jump()
+if not p.jumping then
+p.jumping = true
+p.dy = -jumping_height
+end
 end
 
 function update_gravity()
 if get_block_below(p, 0) then
 if (p.dy > 0) then
+p.jumping = false
 p.dy = 0
 p.y = flr(flr(p.y)/8)*8
 end
@@ -88,6 +128,10 @@ end
 
 function is_in_front_of_a_block()
 return get_block_in_front(p, 0)
+end
+
+function is_below_a_block()
+return get_block_on_top(p, 0)
 end
 function _init()
 constants_init()
@@ -400,6 +444,24 @@ __music__
 00 41424344
 00 41424344
 00 41424344
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
