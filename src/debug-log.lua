@@ -1,3 +1,3 @@
 function print_log()
- print(p.jumping)
+ print(p.dy)
 end

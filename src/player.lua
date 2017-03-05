@@ -55,18 +55,20 @@ function jump()
 end
 
 function update_gravity()
- if get_block_below(p, 0) then
-  if (p.dy > 0) then
+ if is_on_a_platform() and (p.dy > 0) then
    p.jumping = false
    p.dy = 0
    p.y = flr(flr(p.y)/8)*8
-  end 
  else
   p.dy += gravity
   if p.dy >= max_falling_speed then
    p.dy = max_falling_speed
   end
  end
+end
+
+function is_on_a_platform()
+ return get_block_below(p, 0) or get_block_below(p, 1)
 end
 
 function is_in_front_of_a_block()
