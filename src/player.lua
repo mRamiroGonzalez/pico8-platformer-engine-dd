@@ -64,9 +64,13 @@ end
 
 function update_gravity()
  if (is_on_a_platform() or is_on_a_solid_block()) and (p.dy > 0) then
+  if is_on_a_platform() and down_pressed(false) then
+   p.dy = 4
+  else 
    p.jumping = false
    p.dy = 0
    p.y = flr(flr(p.y)/8)*8
+  end
  else
   if is_on_a_ladder() then
    p.jumping = false
