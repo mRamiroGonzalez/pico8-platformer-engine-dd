@@ -1,13 +1,18 @@
 
 My attempt at making a small 2D platformer engine
 
+
+This project is compressed using a php script, see https://www.reddit.com/r/pico8/comments/5p9ohs/my_pico8_development_workflow/
+
 - Working:
-  - Jump
-  - Basic platforms
+  - Player walking on solid block
+  - Player jumping and not going through blocs except when supposed to
+  - Gravity affects the player
+  - Player can climb a ladder
   
-- Not working:
-  - Jumping on floors with a height which is not a multiple of 8
-  - The speed of the jump and gravity sometimes causes the player to go in the ground
+- Not working - bugs:
+  - The player can go through blocks if it's speed is more than 8 px/loop
+  - the top of the ladder is still a bit glichy
 
 - Flags:
   - 0: The block is considered as solid. You can't pass through from any side
