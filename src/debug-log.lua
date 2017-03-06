@@ -1,4 +1,4 @@
 function print_log()
- print(is_on_a_ladder())
- print(p.jumping)
+ print("shots")
+ print(count(p.shots))
 end

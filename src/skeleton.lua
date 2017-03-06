@@ -8,8 +8,10 @@ function _draw()
  map_draw()
  print_log()
  player_draw()
+ player_shots_draw()
 end
 
 function _update()
  player_update_position()
+ player_update_shots()
 end

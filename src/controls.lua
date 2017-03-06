@@ -17,3 +17,13 @@ function right_pressed(short)
  if short then return btnp(1)
  else return btn(1) end
 end
+
+function action_1_pressed(short)
+ if short then return btnp(4)
+ else return btn(4) end
+end
+
+function action_2_pressed(short)
+ if short then return btnp(5)
+ else return btn(5) end
+end

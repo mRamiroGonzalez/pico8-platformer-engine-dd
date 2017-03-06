@@ -5,7 +5,8 @@ function player_init()
   dx = 0,
   dy = 0,
   facing = 1,
-  jumping = false
+  jumping = false,
+  shots = {}
  }
 end
 
@@ -18,8 +19,20 @@ function player_draw()
  spr(0, p.x, p.y, 1, 1)
 end
 
+function player_update_shots()
+ shot_update_position(p.shots)
+end
+
+function player_shots_draw()
+ shot_draw(p.shots)
+end
+
 function update_from_keys_pressed()
  p.dx = 0
+
+ if action_1_pressed(true) then
+  add(p.shots, shot_create(p))
+ end
 
  if is_on_a_ladder() then
   if up_pressed(false) then

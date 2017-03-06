@@ -9,6 +9,7 @@ This project is compressed using a php script, see https://www.reddit.com/r/pico
   - Player jumping and not going through blocs except when supposed to
   - Gravity affects the player
   - Player can climb a ladder
+  - Player can shoot (shots disappear when too far from their starting point)
   
 - Not working - bugs:
   - The player can go through blocks if it's speed is more than 8 px/loop
