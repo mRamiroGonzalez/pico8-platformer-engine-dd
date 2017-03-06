@@ -52,5 +52,5 @@ function is_too_far(s)
 end
 
 function hits_a_wall(s)
- return false
+ return get_block_in_front(s, 0)
 end

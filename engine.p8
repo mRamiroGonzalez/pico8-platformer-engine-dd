@@ -245,7 +245,7 @@ return s.dist_left <= 0
 end
 
 function hits_a_wall(s)
-return false
+return get_block_in_front(s, 0)
 end
 function _init()
 constants_init()
@@ -560,6 +560,9 @@ __music__
 00 41424344
 00 41424344
 00 41424344
+
+
+
 
 
 
