@@ -12,7 +12,8 @@ This project is compressed using a php script, see https://www.reddit.com/r/pico
   
 - Not working - bugs:
   - The player can go through blocks if it's speed is more than 8 px/loop
-  - the top of the ladder is still a bit glichy
+  - the top of the ladder is still a bit glitchy
+  - The player can be teleported from the middle of a block to the top of it (platform block)
 
 - Flags:
   - 0: The block is considered as solid. You can't pass through from any side
