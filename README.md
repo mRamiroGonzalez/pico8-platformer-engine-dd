@@ -6,7 +6,7 @@ This project is compressed using a php script, see https://www.reddit.com/r/pico
 
 - Working:
   - Player walking on solid block
-  - Player jumping and not going through blocs except when supposed to
+  - Player jumping and not going through blocs except when supposed to (platforms)
   - Gravity affects the player
   - Player can climb a ladder
   - Player can shoot
@@ -18,7 +18,6 @@ This project is compressed using a php script, see https://www.reddit.com/r/pico
   - The player can go through blocks if it's speed is more than 8 px/loop
   - The top of the ladder is still a bit glitchy
   - The player can be teleported from the middle of a block to the top of it (platform block)
-  - The hit detection need to be improved
 
 - Flags:
   - 0: The block is considered as solid. You can't pass through from any side
