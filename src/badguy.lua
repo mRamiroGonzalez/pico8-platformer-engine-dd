@@ -15,9 +15,9 @@ function badguy_create(bx, by)
 end
 
 function badguys_create()
- add(badguys, badguy_create(10, 20))
- add(badguys, badguy_create(20, 30))
- add(badguys, badguy_create(30, 40))
+ add(badguys, badguy_create(8, 30-8))
+ add(badguys, badguy_create(16+48, 37-8))
+ add(badguys, badguy_create(24, 45-8))
 end
 
 function badguys_update_position() 
