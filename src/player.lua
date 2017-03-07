@@ -34,7 +34,7 @@ function update_from_keys_pressed()
   add(p.shots, shot_create(p))
  end
 
- if is_on_a_ladder() then
+ if is_on_a_ladder(p) then
   if up_pressed(false) then
    p.dy = -default_y_speed
   elseif down_pressed(false) then
@@ -48,19 +48,19 @@ function update_from_keys_pressed()
 
  if left_pressed(false) then
   p.facing = 0
-  if not is_in_front_of_a_block() then
+  if not is_in_front_of_a_block(p) then
    p.dx = -default_x_speed
   end
  end
 
  if right_pressed(false) then
   p.facing = 1
-  if not is_in_front_of_a_block() then
+  if not is_in_front_of_a_block(p) then
    p.dx = default_x_speed
   end
  end
 
- if is_below_a_block() then 
+ if is_below_a_block(p) then 
   p.dy = default_y_speed 
  end
 
@@ -76,8 +76,8 @@ function jump()
 end
 
 function update_gravity()
- if (is_on_a_platform() or is_on_a_solid_block()) and (p.dy > 0) then
-  if is_on_a_platform() and down_pressed(false) then
+ if (is_on_a_platform(p) or is_on_a_solid_block(p)) and (p.dy > 0) then
+  if is_on_a_platform(p) and down_pressed(false) then
    p.dy = 4
   else 
    p.jumping = false
@@ -85,7 +85,7 @@ function update_gravity()
    p.y = flr(flr(p.y)/8)*8
   end
  else
-  if is_on_a_ladder() then
+  if is_on_a_ladder(p) then
    p.jumping = false
    p.dy = 0
   else
@@ -95,24 +95,4 @@ function update_gravity()
    p.dy = max_falling_speed
   end
  end
-end
-
-function is_on_a_ladder()
- return get_current_block(p, 2)
-end
-
-function is_on_a_platform()
- return get_block_below(p, 1)
-end
-
-function is_on_a_solid_block()
- return get_block_below(p, 0)
-end
-
-function is_in_front_of_a_block()
- return get_block_in_front(p, 0)
-end
-
-function is_below_a_block()
- return get_block_on_top(p, 0)
 end

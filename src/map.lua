@@ -29,3 +29,24 @@ end
 function get_block_flag(x, y, flag)
  return fget(mget(flr(x/8), flr(y/8)), flag)
 end
+
+
+function is_on_a_ladder(e)
+ return get_current_block(e, 2)
+end
+
+function is_on_a_platform(e)
+ return get_block_below(e, 1)
+end
+
+function is_on_a_solid_block(e)
+ return get_block_below(e, 0)
+end
+
+function is_in_front_of_a_block(e)
+ return get_block_in_front(e, 0)
+end
+
+function is_below_a_block(e)
+ return get_block_on_top(e, 0)
+end
