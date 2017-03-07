@@ -8,7 +8,7 @@ function shot_init(e, mir_x)
   mir_x = mir_x,
   gravity = 0,
   speed = 5,
-  dist_left = 50
+  dist_left = 300
  }
  return s
 end

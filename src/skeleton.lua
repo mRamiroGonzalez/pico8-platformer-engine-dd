@@ -18,4 +18,5 @@ function _update()
  player_update_position()
  player_update_shots()
  badguys_update_position()
+ shots_collide_badguys(p.shots, badguys)
 end
