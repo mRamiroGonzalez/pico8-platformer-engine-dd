@@ -1,15 +1,32 @@
-function badguy_init()
+function badguys_init()
+ badguys = {}
+end
+
+function badguy_create(bx, by)
  b = {
-  x = 10,
-  y = 20,
+  x = bx,
+  y = by,
   dx = 0,
   dy = 0,
   facing = 1,
   shots = {}
  }
+ return b
 end
 
-function badguy_update_position()
+function badguys_create()
+ add(badguys, badguy_create(10, 20))
+ add(badguys, badguy_create(20, 30))
+ add(badguys, badguy_create(30, 40))
+end
+
+function badguys_update_position() 
+ for b in all(badguys) do
+  badguy_update_position(b)
+ end
+end
+
+function badguy_update_position(b)
  b.y += b.dy
  b.dx = (rnd(2) - 1)*4
  if b.dx > 0 then b.facing = 1 end
@@ -20,7 +37,13 @@ function badguy_update_position()
  badguy_update_gravity(b)
 end
 
-function badguy_draw()
+function badguys_draw()
+ for b in all(badguys) do
+  badguy_draw(b)
+ end
+end
+
+function badguy_draw(b)
  spr(32, b.x, b.y, 1, 1)
 end
 

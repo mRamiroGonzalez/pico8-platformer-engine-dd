@@ -1,7 +1,8 @@
 function _init()
  constants_init()
  player_init()
- badguy_init()
+ badguys_init()
+ badguys_create()
 end
 
 function _draw()
@@ -10,11 +11,11 @@ function _draw()
  print_log()
  player_draw()
  player_shots_draw()
- badguy_draw()
+ badguys_draw()
 end
 
 function _update()
  player_update_position()
  player_update_shots()
- badguy_update_position()
+ badguys_update_position()
 end

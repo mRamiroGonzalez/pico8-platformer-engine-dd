@@ -1,3 +1,3 @@
 function print_log()
- print(b.dy)
+ print(count(badguys))
 end
