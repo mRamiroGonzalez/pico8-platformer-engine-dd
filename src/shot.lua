@@ -14,8 +14,7 @@ function shot_init(e, mir_x)
 end
 
 function shot_create(e)
- mir_x = (e.facing != 0)
- print(mir_x)
+ mir_x = (e.facing == 0)
  s = shot_init(e, mir_x)
  return s
 end
@@ -23,9 +22,9 @@ end
 function shot_update_position(shots)
  for s in all(shots) do
   if s.mir_x then
-   s.dx = s.speed
-  else
    s.dx = -s.speed
+  else
+   s.dx = s.speed
   end
   if gravity != 0 then
    s.dy += s.gravity
@@ -52,5 +51,5 @@ function is_too_far(s)
 end
 
 function hits_a_wall(s)
- return get_block_in_front(s, 0)
+ return get_current_block(s, 0)
 end
