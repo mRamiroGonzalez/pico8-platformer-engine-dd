@@ -1,4 +1,3 @@
 function print_log()
- print("shots")
- print(count(p.shots))
+ print(b.dy)
 end
